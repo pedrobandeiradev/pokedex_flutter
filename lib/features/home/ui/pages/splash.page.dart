@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pokedex/app/app_routes.dart';
 
@@ -27,7 +28,10 @@ class _SplashPageState extends State<SplashPage>
       vsync: this,
     );
     _startRotatingPokeball();
-    _fetchData();
+    SchedulerBinding.instance?.addPostFrameCallback((_) {
+      _fetchData();
+    });
+
     super.initState();
   }
 

@@ -8,7 +8,7 @@ import 'details_bloc.export.dart';
 class DetailsBloc extends Bloc<BlocEvent, BlocState> {
   DetailsBloc({
     required this.repository,
-  });
+  }) : super(InitialState());
 
   late PokemonDetailsModel pokemon;
 

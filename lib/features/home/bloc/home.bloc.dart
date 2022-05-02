@@ -10,11 +10,11 @@ import '../repository/home.repository.dart';
 class HomeBloc extends Bloc<BlocEvent, BlocState> {
   final HomeRepository repository;
   late int _limit;
-  late int _currentOffset;
+  int _currentOffset = 0;
 
   HomeBloc({
     required this.repository,
-  });
+  }) : super(InitialState());
 
   @override
   HomeState get initialState => InitialState();
