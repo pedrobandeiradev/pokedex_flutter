@@ -1,7 +1,12 @@
 import 'package:flutter/foundation.dart';
-import 'package:pokedex/core/utilities/decodable/decodable_protocol.dart';
 
 import '../builder/model_builder_factory.dart';
+
+abstract class DecodableProtocol {
+  T fromJson<T>(Map<String, dynamic> json);
+
+  List<T> fromJsonList<T>(List<dynamic> jsonList);
+}
 
 mixin Decodable {
   static final _Decodable decode = _Decodable();

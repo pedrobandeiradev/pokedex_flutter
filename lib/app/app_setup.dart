@@ -1,14 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:pokedex/core/services/pokedex.service.dart';
-import 'package:pokedex/features/details/bloc/details_bloc.export.dart';
-import 'package:pokedex/features/home/bloc/home_bloc.export.dart';
+import 'package:pokedex/core/services/pokedex_service.dart';
 import 'package:pokedex/app/app_routes.dart';
 
-import '../features/details/repository/details.repository.dart';
-import '../features/home/repository/home.repository.dart';
-import '../features/home/ui/pages/splash.page.dart';
+import '../features/details/bloc/details_bloc.dart';
+import '../features/details/repository/details_repository.dart';
+import '../features/home/bloc/home_bloc.dart';
+import '../features/home/repository/home_repository.dart';
+import '../features/home/ui/pages/splash_page.dart';
 
 class PokedexApp extends StatelessWidget {
   const PokedexApp({Key? key}) : super(key: key);

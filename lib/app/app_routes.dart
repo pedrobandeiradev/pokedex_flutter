@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../features/details/ui/pages/details.page.dart';
-import '../features/home/ui/pages/home.page.dart';
-import '../features/home/ui/pages/splash.page.dart';
+import '../features/details/ui/pages/details_page.dart';
+import '../features/home/ui/pages/home_page.dart';
+import '../features/home/ui/pages/splash_page.dart';
 
 class AppRoutes {
   static Map<String, WidgetBuilder> builder = {
