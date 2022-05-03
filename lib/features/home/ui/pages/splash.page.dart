@@ -64,39 +64,39 @@ class _SplashPageState extends State<SplashPage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _buider,
+      body: _buider(),
     );
   }
 
-  Widget get _loader {
+  _loader() {
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           RotationTransition(
             turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
-            child: _splashImage,
+            child: _splashImage(),
           ),
         ],
       ),
     );
   }
 
-  Widget get _buider {
+  _buider() {
     return BlocBuilder<HomeBloc, BlocState>(
       bloc: _bloc,
       builder: (BuildContext context, BlocState state) {
         if (state is SuccessfullyLoadedContentState<PokemonListResponse>) {
           _didFinishLoadingData();
         } else if (state is FailedLoadingContentState) {
-          return _errorContent;
+          return _errorContent();
         }
-        return _loader;
+        return _loader();
       },
     );
   }
 
-  Widget get _errorContent {
+  _errorContent() {
     return Container(
       color: Colors.black,
       child: Column(
@@ -109,7 +109,7 @@ class _SplashPageState extends State<SplashPage>
     );
   }
 
-  Widget get _splashImage {
+  _splashImage() {
     return const Image(
       image: AssetImage(
         'assets/pokeball.png',

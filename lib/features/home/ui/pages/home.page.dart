@@ -29,13 +29,13 @@ class _HomePageState extends State<HomePage> {
         return false;
       },
       child: Scaffold(
-        appBar: _appBar,
-        body: _buider,
+        appBar: _appBar(),
+        body: _buider(),
       ),
     );
   }
 
-  AppBar get _appBar {
+  _appBar() {
     return AppBar(
       title: const Image(
         image: AssetImage(
@@ -46,27 +46,27 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Widget get _loader {
+  _loader() {
     return const Center(
       child: CircularProgressIndicator(),
     );
   }
 
-  Widget get _buider {
+  _buider() {
     return BlocBuilder<HomeBloc, BlocState>(
       bloc: _bloc,
       builder: (BuildContext context, BlocState state) {
         if (state is SuccessfullyLoadedContentState<PokemonListResponse>) {
-          return _content;
+          return _content();
         } else if (state is FailedLoadingContentState) {
-          return _errorContent;
+          return _errorContent();
         }
-        return _loader;
+        return _loader();
       },
     );
   }
 
-  Widget get _content {
+  _content() {
     return SingleChildScrollView(
       physics: const AlwaysScrollableScrollPhysics(),
       child: Column(
@@ -77,13 +77,13 @@ class _HomePageState extends State<HomePage> {
             ),
             child: SearchBar(),
           ),
-          _listOfPokemon,
+          _listOfPokemon(),
         ],
       ),
     );
   }
 
-  Widget get _errorContent {
+  _errorContent() {
     return Container(
       color: Colors.black,
       child: Column(
@@ -96,7 +96,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  GridView get _listOfPokemon {
+  _listOfPokemon() {
     return GridView.count(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),

@@ -39,13 +39,13 @@ class PokemonCard extends StatelessWidget {
                     left: 8.0,
                     right: 24.0,
                   ),
-                  child: _pokemonName,
+                  child: _pokemonName(),
                 ),
                 Padding(
                   padding: const EdgeInsets.only(
                     left: 16.0,
                   ),
-                  child: _pokemonID,
+                  child: _pokemonID(),
                 ),
               ],
             ),
@@ -56,7 +56,7 @@ class PokemonCard extends StatelessWidget {
                   16.0,
                 ),
               ),
-              child: _pokemonImage,
+              child: _pokemonImage(),
             ),
           ],
         ),
@@ -64,7 +64,7 @@ class PokemonCard extends StatelessWidget {
     );
   }
 
-  Widget get _pokemonName {
+  _pokemonName() {
     return SizedBox(
       child: Text(
         name,
@@ -77,7 +77,7 @@ class PokemonCard extends StatelessWidget {
     );
   }
 
-  Widget get _pokemonID {
+  _pokemonID() {
     return SizedBox(
       child: Text(
         '#$id',
@@ -85,7 +85,7 @@ class PokemonCard extends StatelessWidget {
     );
   }
 
-  Widget get _pokemonImage {
+  _pokemonImage() {
     return SizedBox(
       child: Image(
         image: NetworkImage(

@@ -24,12 +24,12 @@ class SearchBar extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _searchTextField,
+          _searchTextField(),
           Align(
             alignment: Alignment.centerRight,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: _submitButton,
+              child: _submitButton(),
             ),
           ),
         ],
@@ -37,7 +37,7 @@ class SearchBar extends StatelessWidget {
     );
   }
 
-  Widget get _searchTextField {
+  _searchTextField() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextField(
@@ -63,7 +63,7 @@ class SearchBar extends StatelessWidget {
     );
   }
 
-  Widget get _submitButton {
+  _submitButton() {
     return TextButton(
       style: TextButton.styleFrom(
         primary: Colors.red,

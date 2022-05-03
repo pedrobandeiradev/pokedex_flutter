@@ -17,7 +17,7 @@ class _DetailsPageState extends State<DetailsPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _appBar,
-      body: _builder,
+      body: _builder(),
     );
   }
 
@@ -31,22 +31,22 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  Widget get _builder {
+  _builder() {
     return _content;
   }
 
-  Widget get _content {
+  _content() {
     return SingleChildScrollView(
       child: Column(
         children: [
-          _pokemonImageContainer,
-          _pokemonInfoContainer,
+          _pokemonImageContainer(),
+          _pokemonInfoContainer(),
         ],
       ),
     );
   }
 
-  Widget get _pokemonImageContainer {
+  _pokemonImageContainer() {
     String pokemonID = _bloc.pokemon.id;
     return Container(
       decoration: BoxDecoration(
@@ -60,17 +60,17 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  Widget get _pokemonInfoContainer {
+  _pokemonInfoContainer() {
     return Column(
       children: [
-        _pokemonName,
-        _listOfTypes,
-        _listOfInformations,
+        _pokemonName(),
+        _listOfTypes(),
+        _listOfInformations(),
       ],
     );
   }
 
-  Widget get _pokemonName {
+  _pokemonName() {
     return Text(
       _bloc.pokemon.name,
       style: const TextStyle(
@@ -80,7 +80,7 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  Widget get _listOfInformations {
+  _listOfInformations() {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -94,7 +94,7 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  Widget get _listOfTypes {
+  _listOfTypes() {
     return GridView.count(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
