@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:pokedex/core/services/base/base.service.dart';
+import 'package:pokedex/core/services/base/base_service.dart';
 import 'package:pokedex/core/services/pokemon_details/pokemon_details_request.dart';
 import 'package:pokedex/core/services/pokemon_list/pokemon_list_request.dart';
 import 'package:pokedex/core/services/pokemon_search/pokemon_search_request.dart';

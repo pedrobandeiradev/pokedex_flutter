@@ -1,17 +1,19 @@
 export 'package:pokedex/core/utilities/extension/map_json_extension.dart';
 
+import 'package:dio/dio.dart';
+
 abstract class GenericBaseResponse {}
 
-class BaseResponse<T> {
+class BaseResponse<T> extends Response with GenericBaseResponse {
   final String endpoint;
-  final int statusCode;
   final T body;
-  final Map<String, dynamic> headers;
 
   BaseResponse({
     required this.endpoint,
-    required this.statusCode,
     required this.body,
-    required this.headers,
-  });
+  }) : super(
+            requestOptions: RequestOptions(
+          path: endpoint,
+          data: body,
+        ));
 }

@@ -1,19 +1,21 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:pokedex/core/services/base/base_request.dart';
 import '../../utilities/decodable/decodable.dart';
 import '../exceptions/service_errors.dart';
-import 'base_response.dart';
 import 'empty_response.dart';
 
 mixin BaseService {
-  T handle<T>(BaseResponse response) {
-    final int statusCode = response.statusCode;
+  T handle<T>(Response response) {
+    final int statusCode = response.statusCode ?? 500;
 
     if (statusCode >= 200 && statusCode <= 299) {
       if (T == EmptyResponse) {
         return EmptyResponse() as T;
       }
-      return Decodable.decode.fromJson<T>(response.body);
+      final json = jsonDecode(response.data) as Map<String, dynamic>;
+      return Decodable.decode.fromJson<T>(json);
     }
 
     if (statusCode >= 300 && statusCode < 400) {
@@ -43,7 +45,7 @@ mixin BaseService {
         requestPath,
         queryParameters: request.params,
       );
-      return handle<T>(response as BaseResponse);
+      return handle<T>(response);
     } catch (exception) {
       throw UnexpectedError();
     }
