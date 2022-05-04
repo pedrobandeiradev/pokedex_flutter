@@ -24,7 +24,10 @@ class SearchBar extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _searchTextField(),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: _searchTextField(),
+          ),
           Align(
             alignment: Alignment.centerRight,
             child: Padding(
@@ -37,33 +40,30 @@ class SearchBar extends StatelessWidget {
     );
   }
 
-  _searchTextField() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: TextField(
-        controller: _searchController,
-        decoration: const InputDecoration(
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(
-                24.0,
-              ),
+  TextField _searchTextField() {
+    return TextField(
+      controller: _searchController,
+      decoration: const InputDecoration(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(
+              24.0,
             ),
           ),
-          filled: true,
-          fillColor: Colors.white,
-          hintText: 'Search Pokemon',
         ),
-        enabled: true,
-        onChanged: (text) {
-          searchText = text;
-        },
-        onSubmitted: (text) => _onSearchTextSubmission(text),
+        filled: true,
+        fillColor: Colors.white,
+        hintText: 'Search Pokemon',
       ),
+      enabled: true,
+      onChanged: (text) {
+        searchText = text;
+      },
+      onSubmitted: (text) => _onSearchTextSubmission(text),
     );
   }
 
-  _submitButton() {
+  TextButton _submitButton() {
     return TextButton(
       style: TextButton.styleFrom(
         primary: Colors.red,

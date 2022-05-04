@@ -65,33 +65,27 @@ class PokemonCard extends StatelessWidget {
     );
   }
 
-  _pokemonName() {
-    return SizedBox(
-      child: Text(
-        name,
-        textAlign: TextAlign.center,
-        style: const TextStyle(
-          fontSize: 22.0,
-          fontWeight: FontWeight.bold,
-        ),
+  Text _pokemonName() {
+    return Text(
+      name,
+      textAlign: TextAlign.center,
+      style: const TextStyle(
+        fontSize: 22.0,
+        fontWeight: FontWeight.bold,
       ),
     );
   }
 
-  _pokemonID() {
-    return SizedBox(
-      child: Text(
-        '#$id',
-      ),
+  Text _pokemonID() {
+    return Text(
+      '#$id',
     );
   }
 
-  _pokemonImage() {
-    return SizedBox(
-      child: Image(
-        image: NetworkImage(
-          imageURL + '$id.png',
-        ),
+  Image _pokemonImage() {
+    return Image(
+      image: NetworkImage(
+        imageURL + '$id.png',
       ),
     );
   }

@@ -47,7 +47,7 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  _pokemonImageContainer() {
+  Container _pokemonImageContainer() {
     String pokemonID = _bloc.pokemon.id;
     return Container(
       decoration: BoxDecoration(
@@ -62,7 +62,7 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  _pokemonInfoContainer() {
+  Column _pokemonInfoContainer() {
     return Column(
       children: [
         _pokemonName(),
@@ -72,7 +72,7 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  _pokemonName() {
+  Text _pokemonName() {
     return Text(
       _bloc.pokemon.name,
       style: const TextStyle(
@@ -82,7 +82,7 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  _listOfInformations() {
+  ListView _listOfInformations() {
     return ListView.builder(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
@@ -96,7 +96,7 @@ class _DetailsPageState extends State<DetailsPage> {
     );
   }
 
-  _listOfTypes() {
+  GridView _listOfTypes() {
     return GridView.count(
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),

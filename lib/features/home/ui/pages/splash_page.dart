@@ -7,6 +7,7 @@ import 'package:pokedex/features/home/ui/pages/splash_text.dart';
 
 import '../../../../core/utilities/bloc/bloc_export.dart';
 import '../../bloc/home_bloc.dart';
+import '../components/full_page_loader.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({
@@ -28,7 +29,6 @@ class _SplashPageState extends State<SplashPage>
       duration: const Duration(milliseconds: 1000),
       vsync: this,
     );
-    _startRotatingPokeball();
     SchedulerBinding.instance?.addPostFrameCallback((_) {
       _fetchData();
     });
@@ -40,11 +40,6 @@ class _SplashPageState extends State<SplashPage>
   void dispose() {
     _controller.dispose();
     super.dispose();
-  }
-
-  void _startRotatingPokeball() {
-    _controller.forward();
-    _controller.repeat();
   }
 
   void _didFinishLoadingData() {
@@ -69,21 +64,7 @@ class _SplashPageState extends State<SplashPage>
     );
   }
 
-  _loader() {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          RotationTransition(
-            turns: Tween(begin: 0.0, end: 1.0).animate(_controller),
-            child: _splashImage(),
-          ),
-        ],
-      ),
-    );
-  }
-
-  _buider() {
+  BlocBuilder _buider() {
     return BlocBuilder<HomeBloc, BlocState>(
       bloc: _bloc,
       builder: (BuildContext context, BlocState state) {
@@ -94,16 +75,10 @@ class _SplashPageState extends State<SplashPage>
             error: SplashText.errorMessage,
           );
         }
-        return _loader();
+        return FullPageLoader(
+          controller: _controller,
+        );
       },
-    );
-  }
-
-  _splashImage() {
-    return const Image(
-      image: AssetImage(
-        'assets/pokeball.png',
-      ),
     );
   }
 }
